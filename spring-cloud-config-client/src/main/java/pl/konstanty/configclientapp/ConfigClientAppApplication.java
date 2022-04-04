@@ -5,16 +5,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableDiscoveryClient
 @RestController // w are putting it here only for demo purpose
+@RefreshScope
 public class ConfigClientAppApplication {
 
 	@Autowired //we can use @Inject
 	private ConfigClientAppConfiguration properties;
+
 
 	@Value("${some.other.property}")
 	private String someOtherProperty;
